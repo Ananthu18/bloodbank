@@ -1,0 +1,84 @@
+<html>
+<script>
+ function fun(x)
+	{
+	 document.getElementById('12').style.backgroundColor=x;
+	}
+function ValidateEmail()
+     {
+    var mailformat = /^\w+([\.-]?\w+)@\w+([\.-]?\w+)(\.\w{2,3})+$/;
+	var x=document.getElementById('Email').value;
+     if((x.match(mailformat)))
+     {
+     return true;
+     }
+     else
+     {
+     alert("You have entered an invalid email address!");
+     return false;
+      }
+      }
+</script>
+<style>
+label
+		{
+			padding:20px;
+			display: inline-block;
+			font-size:20px;
+			font-family:Arial, sans-serif;
+			color:black;
+		}
+	#cot2
+		{   
+		    margin-top:50px;
+		    position:absolute;
+			margin-left:330px;
+		    background-color:orange;
+		    width:50%;
+			border-radius:8px;
+		}
+input[type=submit]
+		{
+			background-color:yellow;
+			font-size:15px;
+			color:black;
+			border:none;
+			padding:15px;
+			border-radius:8px;
+			font-family:Arial, sans-serif;
+			margin-left:10%;
+		}
+		select,input[type=text]
+		{
+			width: 150px;
+			background-color:#7CFC00;
+			padding: 12px;
+			border: 1px solid #ccc;
+			border-radius: 4px;
+			margin-left:60px;
+			
+		}
+</style>
+<body bgcolor="cyan">
+<div id="cot2">
+<center>
+<form method="POST" action="reqblood.php" onsubmit="return ValidateEmail()">
+<label for="blood_groups">Enter your Email address:</label><br>
+<input type="text" name="Email" id="Email" required><br>
+<label for="blood_groups">Choose a Blood Group:</label>
+<center>
+<select onmouseover="fun('red')" onmouseout="fun('#FFF685')" id="12" name="selectblood">
+  <option value="A+">A+</option>
+  <option value="A-">A-</option>
+  <option value="B+">B+</option>
+  <option value="B-">B-</option>
+  <option value="O+">O+</option>
+  <option value="O-">O-</option>
+  <option value="AB+">AB+</option>
+  <option value="AB-">AB-</option>
+</select><br><br><br>
+<input type="submit" name="submit1" value="Request"><br><br>
+</form>
+</form>
+</body>
+</html>

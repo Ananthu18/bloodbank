@@ -1,0 +1,242 @@
+<html>
+<head>
+<script>
+ function hv1(x)
+	{
+	 document.getElementById('fname').style.backgroundColor=x;
+	}
+	function hv2(x)
+	{
+	  document.getElementById('lname').style.backgroundColor=x;
+	}
+	function hv3(x)
+	{
+	   document.getElementById('DOB').style.backgroundColor=x;
+	}
+	function hv4(x)
+	{
+	    document.getElementById('q1').style.backgroundColor=x;
+	}
+	function hv5(x)
+	{
+		 document.getElementById('address').style.backgroundColor=x;
+	}
+	function hv6(x)
+	{
+		 document.getElementById('city').style.backgroundColor=x;
+	}
+	function hv7(x)
+	{
+		 document.getElementById('mobile').style.backgroundColor=x;
+	}
+	function hv8(x)
+	{
+		 document.getElementById('date').style.backgroundColor=x;
+	}
+	function vdob()
+	{
+	   var x=document.getElementById('DOB').value;
+	   var d=new Date(x);
+	   var y=d.getFullYear();
+	   var m=d.getMonth();
+	   var dd=d.getDate();
+	   var curr=new Date();
+	   var yr=curr.getFullYear();
+	   var mon=curr.getMonth();
+	   var date=curr.getDate();
+	   var flag=0;
+	   var a=yr-y;
+	   var b=mon-m;
+	   var c=date-dd;
+	   if(a>18)
+	   {
+	     flag=1;
+	   }
+	   else if(a==18 && b>0)
+	   {
+	    flag=1;
+	   }
+	   else if(a==18 && b==0 && c>0)
+	   {
+	   flag=1;
+	   }
+	   if(flag==0)
+	   {
+	   alert("You Are below 18");
+	   return false;
+	   }
+	   else
+		return true;
+	}
+	function fnm()
+    { 
+     var letters = /^[A-Za-z]+$/;
+	 var x=document.getElementById('fname').value;
+     if(x.match(letters))
+     {
+      return true;
+     }
+     else
+     {
+      alert('name must have alphabet characters only');
+      return false;
+      }
+      }
+	function lnm()
+    { 
+     var letters = /^[A-Za-z]+$/;
+	 var x=document.getElementById('lname').value;
+     if(x.match(letters))
+     {
+      return true;
+     }
+     else
+     {
+      alert('name must have alphabet characters only');
+      return false;
+      }
+    }
+	function cty()
+    { 
+     var letters = /^[A-Za-z]+$/;
+	 var x=document.getElementById('city').value;
+     if(x.match(letters))
+     {
+      return true;
+     }
+     else
+     {
+      alert('City must have alphabet characters only');
+      return false;
+      }
+    }
+	function validatePhone()
+	{
+		var phoneno = /^\d{10}$/;
+		var x=document.getElementById('mobile').value;
+		if((x.match(phoneno)))
+		{
+			return true;
+		}
+		else
+		{
+		   alert("Enter Valid Mobile no");
+		   return false;
+		}
+	}
+	function validateDate()
+	{
+	   var x=document.getElementById('date').value;
+	   var d=new Date(x);
+	   var y=d.getFullYear();
+	   var m=d.getMonth();
+	   var dd=d.getDate();
+	   var curr=new Date();
+	   var yr=curr.getFullYear();
+	   var mon=curr.getMonth();
+	   var date=curr.getDate();
+	   var flag=0;
+	   if(y>yr)
+	   {
+	     flag=1;
+	   }
+	   else if(y==yr && m>mon)
+	   {
+	    flag=1;
+	   }
+	   else if(y==yr && m==mon && dd>date)
+	   {
+	   flag=1;
+	   }
+	   if(flag==0)
+	   {
+	   alert("Enter date starting from tommorow");
+	   return false;
+	   }
+	   else
+		return true;
+	}
+
+</script>
+<style>
+#container
+	{
+margin-left:400px;
+margin-right:400px;
+margin-top:100px;
+margin-bottom:200px;
+background-color:orange;
+border-radius:8px;
+}
+label{
+  padding:20px;
+  display: inline-block;
+  font-size:17px;
+  font-family:Arial, sans-serif;
+  color:black;
+}
+input[type=text],input[type=date],select, textarea {
+  width: 70%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  resize:vertical;
+  margin-left:40px;
+  background-color:yellow;
+}
+input[type=radio]
+{
+margin-left:40px;
+background-color:yellow;
+}
+.btn,input[type=submit]
+{
+background-color:yellow;
+font-size:15px;
+color:black;
+border:none;
+padding:10px;
+border-radius:8px;
+font-family:Arial, sans-serif;
+margin-left:40%;
+}
+</style>
+</head>
+<body bgcolor="cyan">
+	<div id="container">
+			<h1><center>Fill This Form To Donate Blood</center></h1>
+			<form  id="b1" action="insert.php" method="POST" onsubmit="return (validatePhone() && validateDate() && cty() && fnm() && lnm() && vdob() )">
+				<label>Name</label><br>
+				<input type="text" id="fname" name="firstname" placeholder="First Name" onmouseover="hv1('red')" onmouseout="hv1('#FFF685')" required><br>
+				<label>Last Name</label><br>
+                <input type="text" id="lname" name="lastname" placeholder="Last Name" onmouseover="hv2('red')" onmouseout="hv2('#FFF685')" required><br>
+				<label>D.O.B</label><br>
+                <input type="date" id="DOB" name="DOB" placeholder="mm/dd/yyyy"  onmouseover="hv3('red')" onmouseout="hv3('#FFF685')" required><br>
+				<label>Gender</label><br>
+				<input type="radio" id="1" name="gender" value="male" required>Male
+                <input type="radio" id="1" name="gender" value="female">Female
+				<input type="radio" id="1" name="gender" value="Other">Other<br><br>
+				<label>Blood Group</label><br>
+				<select id="q1" name="qq" onmouseover="hv4('red')" onmouseout="hv4('#FFF685')" required>
+                <option value="A+">A+</option>
+                <option value="A-">A-</option>
+                <option value="B+">B+</option>
+                <option value="B-">B-</option>
+                <option value="O+">O+</option>
+                <option value="O-">O-</option>
+                <option value="AB+">AB+</option>
+                <option value="AB-">AB-</option>
+                </select><br>
+				<label>Address</label><br>
+				<textarea id="address" name="address" placeholder="Address" style="height:140px;padding:20px" onmouseover="hv5('red')" onmouseout="hv5('#FFF685')" required></textarea><br>
+				<label>City</label><br>
+				<input type="text" id="city" name="city" placeholder="City" onmouseover="hv6('red')" onmouseout="hv6('#FFF685')" required><br>
+				<label>Mobile</label><br>
+				<input type="text" id="mobile" name="mobile" placeholder="Mobile" onmouseover="hv7('red')" onmouseout="hv7('#FFF685')" required><br>
+				<label>Enter Suitable Date</label><br>
+				<input type="date" id="date" name="date" placeholder="Enter date" onmouseover="hv8('red')" onmouseout="hv8('#FFF685')" required><br>
+			    <input type="submit" name="confirm" value="submit">
+			</form>
+	</div>
+</body>
+</html>
